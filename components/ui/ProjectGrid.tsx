@@ -24,12 +24,12 @@ function ProjectsGrid() {
   return (
     <div className="py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
+        {/* <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">My Projects</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Here are some of the projects I've worked on. Each one represents a unique challenge and learning experience.
           </p>
-        </div>
+        </div> */}
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
