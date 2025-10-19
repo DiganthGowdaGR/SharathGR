@@ -5,7 +5,7 @@ import ProjectsGrid from '@/components/ui/ProjectGrid';
 import ProfileCard from '@/components/ui/ProfileCard';
 
 export default function Page() {
-  const [selectedTab, setSelectedTab] = useState('project');
+  const [selectedTab, setSelectedTab] = useState('about');
 
   return (
     <div className="h-screen flex flex-col gap-10 items-center justify-center bg-gray-50 dark:bg-black p-4">

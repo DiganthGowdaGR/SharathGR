@@ -46,11 +46,11 @@ export default function RootLayout({
                                     <line x1="6" y1="6" x2="18" y2="18"></line>
                                 </svg>
                             </button>
-                            <Threads
+                            {/* <Threads
                                 amplitude={1}
                                 distance={0}
                                 enableMouseInteraction={true}
-                            />
+                            /> */}
                         </div>
                     </div>
                 )}
