@@ -223,7 +223,14 @@ const useMatrixAnimation = (
         cancelAnimationFrame(animationFrameId.current);
       window.removeEventListener("resize", () => setup(width, height));
     };
-  }, [colors, speed, smooth, canvasRef, getRandomColorMemoized, getContainerSize]);
+  }, [
+    colors,
+    speed,
+    smooth,
+    canvasRef,
+    getRandomColorMemoized,
+    getContainerSize,
+  ]);
 };
 
 interface LetterGlitchProps {
@@ -256,11 +263,18 @@ const LetterGlitch = ({
     return { width: 0, height: 0 };
   }, []);
 
-  useMatrixAnimation(canvasRef as React.RefObject<HTMLCanvasElement>, { colors: glitchColors, speed: glitchSpeed, smooth }, getContainerSize);
+  useMatrixAnimation(
+    canvasRef as React.RefObject<HTMLCanvasElement>,
+    { colors: glitchColors, speed: glitchSpeed, smooth },
+    getContainerSize
+  );
 
   return (
     // keep background in normal stacking context (z-0) so it stays behind the card but not under the page
-    <div ref={containerRef} className={`absolute inset-0 z-0 overflow-hidden ${className}`}>
+    <div 
+      ref={containerRef}
+      className={`absolute inset-0 z-0 overflow-hidden ${className}` }
+    >
       <canvas ref={canvasRef} className="block w-full h-full" />
       {/* soften vignette so characters remain visible */}
       {outerVignette && (
@@ -357,11 +371,13 @@ export default function Portfolio2WithBg() {
       </div> */}
 
       {/* Content card - Design is NOT changed */}
-      <div className="relative w-full max-w-5xl p-6 md:p-10 rounded-2xl border border-white/10 bg-black/70 backdrop-blur-sm shadow-2xl z-10">
+      <div className="relative w-full max-w-4xl p-6 md:p-10 rounded-2xl border border-white/10 bg-black/70 backdrop-blur-sm shadow-2xl z-10">
         <main className="flex flex-col md:flex-row items-center justify-between gap-8 py-6 px-4">
           <div className="text-left md:w-1/2">
             {/* Animated gray-white gradient name */}
-            <h1 className={`text-4xl md:text-5xl mb-4 bg-gradient-to-r from-gray-300 via-white to-gray-300 text-transparent bg-clip-text animate-gradient-x ${dancingScript.className}`}>
+            <h1
+              className={`text-4xl md:text-5xl mb-4 bg-gradient-to-r from-gray-300 via-white to-gray-300 text-transparent bg-clip-text animate-gradient-x ${dancingScript.className}`}
+            >
               {"Hi I'm Sharath".split("").map((char, i) => (
                 <motion.span
                   key={i}
@@ -403,12 +419,36 @@ export default function Portfolio2WithBg() {
             </div>
           </div>
 
-          <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 flex-shrink-0">
-            <div className="w-full h-full overflow-hidden shadow-xl rounded-full border-2 border-white/10">
+          <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 flex-shrink-0 ">
+            <div
+              className="w-full h-full overflow-hidden shadow-xl rounded-full border-2 border-white/10 transition-transform duration-200 ease-out hover:scale-110 "
+              style={{
+                transform: "perspective(1000px) rotateX(0deg) rotateY(0deg)",
+                transition: "transform 0.2s ease-out",
+              }}
+              onMouseMove={(e) => {
+                const card = e.currentTarget;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateY = ((x - centerX) / centerX) * 30; // 10 degrees max rotation
+                const rotateX = ((centerY - y) / centerY) * 30;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform =
+                  "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+              }}
+            >
               <img
                 src="https://i.pinimg.com/736x/3c/a0/23/3ca023b594a47949e4664190d0c30e1a.jpg"
                 alt="Profile"
-                className="w-full h-full object-cover rounded-full"
+                className="w-full h-full object-cover rounded-full transition-transform duration-200"
               />
             </div>
           </div>
