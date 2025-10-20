@@ -11,7 +11,7 @@ export default function Page() {
 
   return (
     
-    <div className="h-screen flex flex-col gap-10 items-center justify-center bg-gray-50 dark:bg-black p-4">
+    <div className="h-screen flex flex-col gap-1 items-center justify-center bg-black dark:bg-black p-1">
       <NavTab onTabChange={setSelectedTab} />
       <div className="flex-grow flex items-center justify-center w-full overflow-y-auto">
         {selectedTab === 'about' && <ProfileCard />}

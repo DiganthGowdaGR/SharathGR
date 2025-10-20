@@ -1,5 +1,8 @@
 // ProjectCard.tsx
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import SpotlightImage from './SpotlightImage';
+
+
 
 interface ProjectCardProps {
   title: string;
@@ -19,15 +22,15 @@ export default function ProjectCard({
   demoUrl
 }: ProjectCardProps) {
   return (
+
     <div className="max-w-sm mx-auto bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100">
       {/* Project Image */}
-      <div className="relative group overflow-hidden">
-        <img 
-          src={imageUrl} 
-          alt={title}
-          className="w-full h-48 object-cover transition-transform duration-300"
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300" />
+      <div>   <SpotlightImage
+        imageUrl={imageUrl}
+        alt={title}
+        className="relative group"
+      >
+         </SpotlightImage>
         
         {/* Hover overlay with buttons */}
         <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

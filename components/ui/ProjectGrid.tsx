@@ -1,12 +1,13 @@
 // Example usage in your component
 import ProjectCard from './ProjectCard';
+import Project from '@/public/project/demo1.jpg';
 
 function ProjectsGrid() {
   const projects = [
     {
       title: "E-Commerce Platform",
       description: "A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard.",
-      imageUrl: "/images/ecommerce-demo.jpg",
+      imageUrl: "project/demo1.jpg",
       techStack: ["React", "Node.js", "MongoDB", "Express", "Stripe"],
       githubUrl: "https://github.com/username/ecommerce-platform",
       demoUrl: "https://my-ecommerce-demo.vercel.app"
@@ -14,7 +15,7 @@ function ProjectsGrid() {
     {
       title: "Task Management App",
       description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      imageUrl: "/images/taskapp-demo.jpg",
+      imageUrl: "project/demo1.jpg",
       techStack: ["Next.js", "TypeScript", "PostgreSQL", "Socket.io"],
       githubUrl: "https://github.com/username/task-manager",
       demoUrl: "https://taskapp-demo.netlify.app"
